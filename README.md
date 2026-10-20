@@ -30,3 +30,13 @@ npm run cli -- --script examples/flowchart.txt
 ```
 
 架构、设计决策、开发记录、验收范围见 [doc/README.md](doc/README.md)。
+
+## 范围与验证
+
+支持全部 Phase 1 命令与六种类型：rect / circle / ellipse / line / text / g。`box` 留待后续插件阶段。
+
+采用 Command + Composite + 文档快照事务。命令失败不提交状态；文档 IO 成功后锁定撤销，下一次成功编辑解锁。脚本含错误时继续处理后续行，最终退出码为 1；错误写入 stderr。
+
+`npm run check` 包含严格类型检查、21 项自动测试以及架构依赖检查。GitHub Actions 覆盖 Windows/Ubuntu、Node 22/24。
+
+SVG 仅支持作业范围内的元素与属性；复杂外部 SVG 的支持边界详见架构文档。示例输出：[flowchart.svg](examples/flowchart.svg)。
