@@ -13,6 +13,10 @@
 | `src/main.ts` | 组合根：装配 CLI、会话与存储实现 |
 | `test` | 模型、应用、文件读写与真实 CLI 验收 |
 
+![模块依赖图](architecture.svg)
+
+可编辑 PlantUML 源文件：[architecture.puml](architecture.puml)。SVG 使用 PlantUML 1.2026.9 本地渲染。
+
 ```plantuml
 @startuml
 package "cli" as CLI
@@ -123,7 +127,7 @@ Main --> IO
 | cli.test.ts | 4 | 编译后程序回放作业案例、标准输入顺序、错误恢复、脚本参数和中文路径 |
 | architecture.test.ts | 1 | 全部生产文件依赖方向、一类一文件、文件名与类名 |
 
-CI 在 GitHub Actions 上配置 Windows / Ubuntu × Node 22 / 24 四组检查，状态以仓库 Actions 页面实际结果为准。
+CI 在 GitHub Actions 上配置 Windows / Ubuntu × Node 22 / 24 四组检查。功能验收提交 `60c8291` 的四组检查均已通过，见 [GitHub Actions 验收记录](https://github.com/Fake-WJ/svg-editor-cli/actions/runs/39359696835)。后续提交状态以仓库 Actions 页面实际结果为准。
 
 验收映射：
 

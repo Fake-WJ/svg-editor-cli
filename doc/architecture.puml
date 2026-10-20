@@ -1,0 +1,19 @@
+@startuml
+!pragma layout smetana
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam packageBackgroundColor #EEF4FA
+package "cli" as CLI
+package "application" as App
+package "model" as Model
+package "io" as IO
+component "main (composition root)" as Main
+CLI --> App
+CLI --> Model
+App --> Model
+IO --> App : implements DocumentStore
+IO --> Model
+Main --> CLI
+Main --> App
+Main --> IO
+@enduml
