@@ -2,11 +2,22 @@
 
 TypeScript 面向对象 SVG 编辑器。支持六种内置图形、嵌套容器、SVG 读写以及命令级撤销/重做。
 
+## 仓库与提交材料
+
+- GitHub 仓库：[https://github.com/Fake-WJ/svg-editor-cli](https://github.com/Fake-WJ/svg-editor-cli)
+- 课程作业完整说明：[doc/README.md](doc/README.md)，包含架构方案、设计模式、依赖方向、变化点假设、AI 协作过程、一致性自查和质量保证。
+- 已验收的代码标签：[final](https://github.com/Fake-WJ/svg-editor-cli/tree/final)。标签保留于 2026-10-20 的验收版本；main 包含后续提交说明补充，未改变该标签。
+- 自动化检查：[GitHub Actions](https://github.com/Fake-WJ/svg-editor-cli/actions)。
+
+仓库当前为私有，教师或助教需要仓库访问权限才能查看。此次完成范围为所提供的 `phase_cli_1.md`（Lab1 Phase 1）；不包含未提供要求的后续阶段。
+
 ## 运行
 
 需要 Node.js 22 或以上版本。
 
 ```sh
+git clone https://github.com/Fake-WJ/svg-editor-cli.git
+cd svg-editor-cli
 npm ci
 npm run cli
 ```

@@ -1,4 +1,66 @@
-# Lab1 Phase 1：架构与开发记录
+# Lab1 Phase 1：SVG 命令行编辑器课程作业
+
+## 项目与仓库信息
+
+**仓库地址：[https://github.com/Fake-WJ/svg-editor-cli](https://github.com/Fake-WJ/svg-editor-cli)**
+
+本项目完成所提供 `phase_cli_1.md` 的第一阶段任务：使用 TypeScript 与面向对象方法实现 SVG 命令行编辑器，并与 AI 协作完成架构设计、编码、测试及过程记录。交付包括源代码、测试、命令示例、SVG 输出和本文档。
+
+- 代码验收标签：[final](https://github.com/Fake-WJ/svg-editor-cli/tree/final)，对应提交 `df8a87e`。保留原标签，2026-10-31 的 README 补充位于 main。
+- 检查记录：[final 对应版本的四平台组合验收](https://github.com/Fake-WJ/svg-editor-cli/actions/runs/39360206771)；[最新 CI 状态](https://github.com/Fake-WJ/svg-editor-cli/actions)。
+- 仓库可见性：私有。教师或助教需要获得访问权限后才能克隆、查看代码和检查记录。
+- 本阶段不实现图形界面、box 复合图形插件或动态插件系统；这些属于后续阶段。
+
+## 安装、运行与验收
+
+环境要求：Node.js 22 或以上、npm、Git，以及有权限访问该私有仓库的 GitHub 账号。
+
+```sh
+git clone https://github.com/Fake-WJ/svg-editor-cli.git
+cd svg-editor-cli
+npm ci
+npm run check
+npm run cli
+```
+
+进入 `svg>` 提示符后输入：
+
+```text
+init 800 600
+create g scene
+create rect r1 20 30 120 60 #4a90d9 in scene
+create text t1 40 65 "Hello SVG" in scene
+move scene 10 20
+undo
+redo
+tree
+save demo.svg
+```
+
+将生成的 `demo.svg` 拖入浏览器查看。输入 EOF 退出：Unix 终端通常为 Ctrl+D，Windows 终端可使用 Ctrl+Z 后回车。
+
+运行课程“两节点流程图”案例：
+
+```sh
+npm run cli -- --script examples/flowchart.txt
+```
+
+结果写入 `examples/flowchart.svg`。也可以先执行 `npm run build`，再用 `node dist/main.js` 运行编译后的程序。
+
+## 功能完成情况
+
+| 类别 | 已实现内容 |
+|---|---|
+| 文档管理 | init、read、save、canvas；默认画布 800×600；SVG 保存和读回 |
+| 图形类型 | rect、circle、ellipse、line、text、g；支持 create 的 in 子句 |
+| 基础编辑 | delete、move、scale、set；容器和叶子统一操作 |
+| 层级与顺序 | group、ungroup、addto、front、back；检查非法层级循环 |
+| 信息展示 | tree、show、help；树中内联几何和样式属性 |
+| 历史管理 | 一条编辑命令一个撤销单元；undo/redo；新编辑清空 redo |
+| 输入与错误 | 双引号参数、注释行、唯一且大小写敏感的 ID；失败不提交状态 |
+| 外部 SVG | 缺 ID 自动补齐并警告；读写异常提示；中文和 XML 特殊字符往返 |
+
+重要行为：scale 同时缩放位置与尺寸；顶层容器禁止 ungroup；成功执行 init/read/save 或修改 canvas 后禁止 undo/redo，下一次成功编辑解禁；只读命令不进入历史。颜色省略时沿用 SVG 默认。
 
 ## 架构方案
 
@@ -104,6 +166,12 @@ Main --> IO
 - 增加真正启动编译后 dist/main.js 的子进程测试，回放作业第 6 节与 6.1 节。含预期错误的脚本继续运行，但退出码为 1。
 - 自动安装的 TypeScript 7.0.2 已不提供旧版编译器 AST API，架构检查因此失败。读取已安装包的 exports 核实后，将 TypeScript 固定为 5.9.3，Node 类型固定到 22 系列，保持架构扫描可用。
 - 将测试代码也加入类型检查，发现并纠正 assert.throws 的重载参数问题。最终本地 21 项测试全部通过。
+
+### 2026-10-31 · 提交材料复核
+
+- 核对本地工作区、GitHub 仓库地址和私有可见性；确认原 final 版本的四组 CI 均通过。
+- 再次运行完整类型检查与 21 项测试，补充仓库地址、安装运行步骤、功能清单及提交说明。
+- 保留原 final 标签与真实分步提交记录；本轮只补充文档，不改写先前验收版本。
 
 ## 一致性自查
 
