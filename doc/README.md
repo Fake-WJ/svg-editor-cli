@@ -8,12 +8,12 @@
 
 - 代码验收标签：[final](https://github.com/Fake-WJ/svg-editor-cli/tree/final)，对应提交 `df8a87e`。保留原标签，2026-10-31 的 README 补充位于 main。
 - 检查记录：[final 对应版本的四平台组合验收](https://github.com/Fake-WJ/svg-editor-cli/actions/runs/39360206771)；[最新 CI 状态](https://github.com/Fake-WJ/svg-editor-cli/actions)。
-- 仓库可见性：私有。教师或助教需要获得访问权限后才能克隆、查看代码和检查记录。
+- 仓库可见性：公开（Public）。教师或助教可直接克隆、查看代码和检查记录。
 - 本阶段不实现图形界面、box 复合图形插件或动态插件系统；这些属于后续阶段。
 
 ## 安装、运行与验收
 
-环境要求：Node.js 22 或以上、npm、Git，以及有权限访问该私有仓库的 GitHub 账号。
+环境要求：Node.js 22 或以上、npm 和 Git。公开仓库可直接克隆，无需 GitHub 账号。
 
 ```sh
 git clone https://github.com/Fake-WJ/svg-editor-cli.git

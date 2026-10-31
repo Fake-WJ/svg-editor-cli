@@ -9,7 +9,7 @@ TypeScript 面向对象 SVG 编辑器。支持六种内置图形、嵌套容器�
 - 已验收的代码标签：[final](https://github.com/Fake-WJ/svg-editor-cli/tree/final)。标签保留于 2026-10-20 的验收版本；main 包含后续提交说明补充，未改变该标签。
 - 自动化检查：[GitHub Actions](https://github.com/Fake-WJ/svg-editor-cli/actions)。
 
-仓库当前为私有，教师或助教需要仓库访问权限才能查看。此次完成范围为所提供的 `phase_cli_1.md`（Lab1 Phase 1）；不包含未提供要求的后续阶段。
+仓库当前为公开（Public），教师或助教可直接查看和克隆。此次完成范围为所提供的 `phase_cli_1.md`（Lab1 Phase 1）；不包含未提供要求的后续阶段。
 
 ## 运行
 
